@@ -23,6 +23,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 18.x
+    - run: npm install -E --no-audit --no-fund --no-package-lock
     - run: npm run build
       env:
         PAGE_URI: ${{ secrets.PAGE_URI }}
