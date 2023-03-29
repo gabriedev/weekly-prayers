@@ -23,9 +23,7 @@ jobs:
         node-version: 18.x
     - name: Build
     - run: npm run build
-      env:
-        PAGE_URI: ${{ secrets.PAGE_URI }}
-    - name: Ganerate DAILY.JSON with lastest info
+    - name: Commit DAILY.JSON with lastest info
     - run: |
         git config user.name gabriedev
         git config user.email gabriedev@gmail.com
