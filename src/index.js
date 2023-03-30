@@ -10,10 +10,11 @@ import { promises as fs } from 'fs'
 import { selector } from './utils.js'
 import { chromium } from 'playwright'
 
-function mapReelFromInstagramReels({ id, display_resources, video_url }) {
+function mapReelFromInstagramReels({ node }) {
+  const { id, display_url, video_url } = node
   return {
     id,
-    pictures: display_resources,
+    pictures: display_url,
     url: video_url
   }
 }

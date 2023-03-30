@@ -32,5 +32,5 @@ jobs:
           git config user.name gabriedev
           git config user.email gabriedev@gmail.com
           git add daily.json reels.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update DAILY.JSON with latest info"
+          git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update DAILY WORD and REELS OF INSTAGRAM with latest info"
           git push origin main
