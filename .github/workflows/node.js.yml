@@ -5,31 +5,32 @@ name: Scraper
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
   workflow_dispatch:
 
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 */4 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 18.x
-    - run: npm install -E --no-audit --no-fund --no-package-lock
-    - run: npm run build
-      env:
-        PAGE_URI: ${{ secrets.PAGE_URI }}
-    - run: |
-        git config user.name gabriedev
-        git config user.email gabriedev@gmail.com
-        git add daily.json
-        git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update DAILY.JSON with latest info"
-        git push origin main
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18.x
+      - run: npm install -E --no-audit --no-fund --no-package-lock
+      - run: npm run build
+        env:
+          PAGE_URI: ${{ secrets.PAGE_URI }}
+          INSTAGRAM_API_KEY: ${{ secrets.INSTAGRAM_API_KEY }}
+      - run: |
+          git config user.name gabriedev
+          git config user.email gabriedev@gmail.com
+          git add daily.json reels.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update DAILY.JSON with latest info"
+          git push origin main
