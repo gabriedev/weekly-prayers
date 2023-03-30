@@ -4,6 +4,6 @@
   <strong>DAILY WORD SCRAPER</strong>
 </p>
 
-## Empezar a desarrollar
-
-Este es un repositorio especial para administrar los servicios de pmaplus.
+<p align="center">
+  Este es un repositorio especial para administrar los servicios de pmaplus.
+</p>
