@@ -1,5 +1,5 @@
 {
-  "name": "daily-word-scraper",
+  "name": "pmaplus-repo",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,6 @@
     "build": "node src/index.js"
   },
   "dependencies": {
-    "playwright": "1.31.1",
-    "download": "8.0.0"
+    "playwright": "1.31.1"
   }
 }
