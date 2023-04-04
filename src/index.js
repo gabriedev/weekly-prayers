@@ -9,9 +9,20 @@ import {
 import { promises as fs } from 'fs'
 import { selector } from './utils.js'
 import { chromium } from 'playwright'
+import download from 'video-downloader'
 
-function mapReelFromInstagramReels({ node }) {
+async function mapReelFromInstagramReels({ node }, index) {
   const { id, display_url, video_url } = node
+
+  const filename = `${(index + 1) * 1000}.mp4`
+  const outputDir = `/tmp/`
+  const path = outputDir + filename
+
+  if (await fs.exists(path)) await fs.unlink(path)
+
+  const output = await download(video_url, filename, outputDir)
+  console.log(output)
+
   return {
     id,
     pictures: display_url,
