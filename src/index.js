@@ -18,7 +18,7 @@ async function mapReelFromInstagramReels({ node }, index) {
   const outputDir = `/tmp/`
   const path = outputDir + filename
 
-  if (await fs.exists(path)) await fs.unlink(path)
+  // if (await fs.exists(path)) await fs.unlink(path)
 
   const output = await download(video_url, filename, outputDir)
   console.log(output)
@@ -42,8 +42,8 @@ async function getReelsFromInstagramApi() {
   )
   const { data } = await response.json()
 
-  return data.user.edge_owner_to_timeline_media.edges.map(
-    mapReelFromInstagramReels
+  return await Promise.all(
+    data.user.edge_owner_to_timeline_media.edges.map(mapReelFromInstagramReels)
   )
 }
 
