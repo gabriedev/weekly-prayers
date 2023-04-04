@@ -8,6 +8,6 @@
   },
   "dependencies": {
     "playwright": "1.31.1",
-    "video-downloader": "1.0.4"
+    "download": "8.0.0"
   }
 }
