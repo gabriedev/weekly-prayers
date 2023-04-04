@@ -1,4 +1,5 @@
-import { resolve } from 'path'
+import { resolve, join } from 'path'
+import { fileURLToPath } from 'url'
 import {
   INSTAGRAM_API_KEY,
   INSTAGRAM_API_URL,
@@ -10,8 +11,7 @@ import { promises as fs } from 'fs'
 import { selector } from './utils.js'
 import { chromium } from 'playwright'
 import download from 'download'
-
-const { pathname: root } = new URL('../src', import.meta.url)
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 async function mapReelFromInstagramReels({ node }, index) {
   const { id, display_url, video_url } = node
@@ -20,8 +20,14 @@ async function mapReelFromInstagramReels({ node }, index) {
   const imagefile = `${(index + 1) * 1000}.jpg`
   const outputDir = `tmp`
 
-  await download(video_url, resolve(root, outputDir, 'media', videofile))
-  await download(display_url, resolve(root, outputDir, 'image', imagefile))
+  await download(
+    video_url,
+    join(__dirname, '..', outputDir, 'media', videofile)
+  )
+  await download(
+    display_url,
+    join(__dirname, '..', outputDir, 'image', imagefile)
+  )
 
   return {
     id,
