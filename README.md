@@ -5,5 +5,5 @@
 </p>
 
 <p align="center">
-  Este es un repositorio para algunos archivos especiales de pmaplus.
+  Daily word scraper for PMAPLUS.
 </p>
