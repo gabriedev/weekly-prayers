@@ -5,7 +5,7 @@ import { chromium } from 'playwright'
 
 const { PAGE_URI } = process.env
 
-async function pageTextContext(n) {
+async function pageTextContext(page, n) {
   return {
     title: (await page.textContent(selector(n, 1))).trim(),
     book: (await page.textContent(selector(n, 2))).trim(),
@@ -20,8 +20,8 @@ async function pageTextContext(n) {
 
   const [date, readingOfToday, gospelOfTheDay] = await Promise.all([
     page.textContent('#dataFilter-text'),
-    pageTextContext(3),
-    pageTextContext(4)
+    pageTextContext(page, 3),
+    pageTextContext(page, 4)
   ])
 
   await browser.close()
