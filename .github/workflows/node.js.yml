@@ -27,7 +27,6 @@ jobs:
       - run: npm run build
         env:
           PAGE_URI: ${{ secrets.PAGE_URI }}
-          INSTAGRAM_API_KEY: ${{ secrets.INSTAGRAM_API_KEY }}
       - run: |
           git config user.name gabriedev
           git config user.email gabriedev@gmail.com
