@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: '0 */4 * * *'
+    - cron: '0 */5 * * *'
 
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
           PAGE_URI: ${{ secrets.PAGE_URI }}
       - run: |
           git config user.name gabriedev
-          git config user.email gabriedev@gmail.com
-          git add daily.json reels.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update DAILY WORD and REELS OF INSTAGRAM with latest info"
+          git config user.email "gabriedev@gmail.com"
+          git add word.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update DAILY WORD with latest info"
           git push origin main
